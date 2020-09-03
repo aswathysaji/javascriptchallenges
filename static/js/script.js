@@ -85,3 +85,62 @@ function frontEndlook(humanImageChoice,botImageChoice,finalMessage){
 
     document.getElementById('flex-box-rps-div').appendChild(botDiv);
 }
+
+//challenge 4:Change the color of all buttons
+
+    var allButtons=document.getElementsByTagName('button');
+    console.log(allButtons);
+    var copyAllButtons=[];
+    for(var i=0;i<allButtons.length;i++){
+         copyAllButtons.push(allButtons[i].classList[1]);
+   }
+   console.log(copyAllButtons);
+   function buttonColorChange(buttonThingy){
+       if(buttonThingy.value === 'red'){
+           buttonRed();
+       }
+       else if(buttonThingy.value==='green'){
+           buttonGreen();
+       }
+       else if(buttonThingy.value==='yellow'){
+           buttonYellow();
+       }
+       else if(buttonThingy.value==='random'){
+           buttonRandom();
+       }
+       else{
+           buttonReset();
+       }
+   }
+   function buttonRed(){
+       for(var i=0;i<allButtons.length;i++){
+           allButtons[i].classList.remove(allButtons[i].classList[1]);
+           allButtons[i].classList.add('btn-danger');
+       }
+   }
+   function buttonGreen(){
+    for(var i=0;i<allButtons.length;i++){
+        allButtons[i].classList.remove(allButtons[i].classList[1]);
+        allButtons[i].classList.add('btn-success');
+    }
+}
+function buttonYellow(){
+    for(var i=0;i<allButtons.length;i++){
+        allButtons[i].classList.remove(allButtons[i].classList[1]);
+        allButtons[i].classList.add('btn-warning');
+    }
+}
+function buttonReset(){
+    for(var i=0;i<allButtons.length;i++){
+        allButtons[i].classList.remove(allButtons[i].classList[1]);
+        allButtons[i].classList.add(copyAllButtons[i]);
+    }
+}
+function buttonRandom(){
+    var choices=['btn-primary','btn-danger','btn-warning','btn-success'];
+    for(var i=0;i<allButtons.length;i++){
+        var randomNumber=Math.floor(Math.random() *4);
+        allButtons[i].classList.remove(allButtons[i].classList[1]);
+        allButtons[i].classList.add(choices[randomNumber]);
+    }
+}
